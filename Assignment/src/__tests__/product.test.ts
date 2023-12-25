@@ -2,7 +2,7 @@ import request from "supertest";
 import app from "../app";
 describe("Product API Endpoints", () => {
   it("get a list of products", async () => {
-    const response = await request(app).get("/api/getproduct");
+    const response = await request(app).get("/api/product");
     expect(response.statusCode).toBe(200);
     expect(response.body.data).toHaveLength(0);
   });
@@ -15,7 +15,7 @@ describe("Product API Endpoints", () => {
     };
 
     const response = await request(app)
-      .post("/api/postproduct")
+      .post("/api/product")
       .send(newProduct);
     expect(response.statusCode).toBe(200);
     expect(response.body.data).toHaveProperty("id");
